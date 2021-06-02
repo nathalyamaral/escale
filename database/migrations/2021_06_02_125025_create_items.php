@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItem extends Migration
+class CreateItems extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateItem extends Migration
      */
     public function up()
     {
-        Schema::create('item', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->increments('cod');
             $table->integer('item_idcustomer')->unsigned();
-            $table->foreign('item_idcustomer')->references('id')->on('customer')->onDelete('cascade');
+            $table->foreign('item_idcustomer')->references('id')->on('customers')->onDelete('cascade');
             $table->decimal('price', 11, 6);
             $table->string('description');
             $table->decimal('amount', 10, 4);
@@ -32,6 +32,6 @@ class CreateItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item');
+        Schema::dropIfExists('items');
     }
 }

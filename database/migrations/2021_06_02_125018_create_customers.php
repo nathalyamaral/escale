@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomer extends Migration
+class CreateCustomers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCustomer extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('customer_client');
-            $table->foreign('customer_client')->references('document')->on('client')->onDelete('cascade');
+            $table->string('client_document');
+            $table->integer('customer_idcliente')->unsigned();
+            $table->foreign('customer_idcliente')->references('id')->on('clients');
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
@@ -29,6 +30,6 @@ class CreateCustomer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('customers');
     }
 }

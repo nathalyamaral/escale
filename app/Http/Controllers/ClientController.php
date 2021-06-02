@@ -4,82 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Service\UserService;
+use App\Service\ClientService;
+Use App\Http\Controllers\UserController;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
+    private $clientService;
+    private $userService;
+    private $userController;
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * ClientController constructor.
+     * @param ClientService $clientService
      */
-    public function create()
+    public function __construct(ClientService $clientService, UserService $userService, UserController $userController)
     {
-        //
+        $this->clientService = $clientService;
+        $this->userService = $userService;
+        $this->userController = $userController;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
+     * Cria um cliente
+     * @param Request $request
+     * @return array|string
      */
-    public function show(Client $client)
-    {
-        //
+    public function createClient(Request $request){
+       
+        try {
+
+            if ($this->userController->valiteAcess($request)->status() == 401) {
+                return $this->userController->valiteAcess($request);
+            }
+            
+            $validator = $this->clientService->validate($request);
+
+            if ($validator->fails()) {
+                return response()->json(['status' => false, 'errors' => $validator->errors()]);
+            }
+            
+            return response()->json(['data' => $this->clientService->createClient($request)], 200);
+        }catch (\Exception $err){
+            return $err->getMessage();
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Client $client)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Client $client)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Client $client)
-    {
-        //
-    }
 }

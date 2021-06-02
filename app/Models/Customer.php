@@ -10,7 +10,8 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'customer_client'
+        'client_document',
+        'customer_idcliente'
     ];
 
     public function item()

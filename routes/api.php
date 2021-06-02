@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/create/client', 'App\Http\Controllers\ClientController@createClient');
+
+Route::post('/create/customer', 'App\Http\Controllers\CustomerController@createCustomer');
+
+Route::post('/create/item', 'App\Http\Controllers\ItemController@createItem');
+
+Route::get('/users/key', 'App\Http\Controllers\UserController@makeAccessKey');

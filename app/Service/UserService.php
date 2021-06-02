@@ -15,11 +15,25 @@ class UserService
      */
     public function validateAccess(Request $request){
 
-        $chave = $request->header('token');
+        $keyrequest = $request->header('token');
         $secret = strtoupper(md5('Auth@'));
         $data = strtoupper(md5(date('Ymd')));
         $key = strtoupper(md5('3sCal3'.$secret.$data));
 
-        return $chave == $key;
+        return $keyrequest == $key;
+    }
+
+    /**
+     * Gera o token autenticação
+     *
+     * @return string
+     */
+    public function generateAccessKey(){
+
+        $secret = strtoupper(md5('Auth@'));
+        $data = strtoupper(md5(date('Ymd')));
+        $key = strtoupper(md5('3sCal3'.$secret.$data));
+
+        return ['status' => 200, 'message' => 'Ok', 'token' => $key];
     }
 }

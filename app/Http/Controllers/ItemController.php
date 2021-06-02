@@ -4,82 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Service\UserService;
+use App\Service\ItemService;
+Use App\Http\Controllers\UserController;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
+    private $itemService;
+    private $userService;
+    private $userController;
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * ItemService constructor.
+     * @param ItemService $itemService
      */
-    public function create()
+    public function __construct(ItemService $itemService, UserService $userService, UserController $userController)
     {
-        //
+        $this->itemService = $itemService;
+        $this->userService = $userService;
+        $this->userController = $userController;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
+     * Cria um cliente
+     * @param Request $request
+     * @return array|string
      */
-    public function show(Item $item)
-    {
-        //
-    }
+    public function createItem(Request $request){
+       
+        try {
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Item $item)
-    {
-        //
-    }
+            if ($this->userController->valiteAcess($request)->status() == 401) {
+                return $this->userController->valiteAcess($request);
+            }
+            
+            $validator = $this->itemService->validate($request);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Item $item)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Item $item)
-    {
-        //
+            if ($validator->fails()) {
+                return response()->json(['message' => "Bad Request", 'errors' => $validator->errors()],400);
+            }
+            
+            return response()->json(['data' => $this->itemService->createItem($request)], 200);
+        }catch (\Exception $err){
+            return $err->getMessage();
+        }
     }
 }

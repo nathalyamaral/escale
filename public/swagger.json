@@ -1,5 +1,72 @@
-
-                                                                     
-  There are no commands defined in the "laravel-swagger" namespace.  
-                                                                     
-
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Escale Api",
+        "description": "",
+        "version": "1.0.0"
+    },
+    "host": "escaleapi.devtest",
+    "basePath": "\/",
+    "paths": {
+        "\/api\/user": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "\/api\/create\/client": {
+            "post": {
+                "summary": "Cria um cliente",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "\/api\/create\/customer": {
+            "post": {
+                "summary": "Cria um customer",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "\/api\/create\/item": {
+            "post": {
+                "summary": "Cria um cliente",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "\/api\/users\/key": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}
