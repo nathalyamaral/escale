@@ -71,7 +71,7 @@ class CustomerController extends Controller
                 return $client;
             }
             
-            return response()->json(['message' => "Ok", 'client' => $client, 'customer' => $customer, 'items' => $item],200);
+            return response()->json(['message' => "Created", 'client' => $client, 'customer' => $customer, 'items' => $item],201);
         }catch (\Exception $err){
             return $err->getMessage();
         }
