@@ -28,7 +28,7 @@ class ItemController extends Controller
 
 
     /**
-     * Cria um cliente
+     * Cria um item
      * @param Request $request
      * @return array|string
      */

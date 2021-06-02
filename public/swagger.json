@@ -46,7 +46,7 @@
         },
         "\/api\/create\/item": {
             "post": {
-                "summary": "Cria um cliente",
+                "summary": "Cria um item",
                 "description": "",
                 "deprecated": false,
                 "responses": {
