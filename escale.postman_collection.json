@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "00cdd0d1-eadb-423e-ac6d-a2922fbaccaf",
 		"name": "escale",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -10,39 +10,15 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "307163F180DBA943097107FE1DC2E08D",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "307163F180DBA943097107FE1DC2E08D",
+						"in": "header",
+						"key": "token"
+					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://escaleapi.devtest/api/users/key",
-					"protocol": "http",
-					"host": [
-						"escaleapi",
-						"devtest"
-					],
-					"path": [
-						"api",
-						"users",
-						"key"
-					]
-				}
+				"url": "http://escaleapi.devtest/api/users/key"
 			},
 			"response": []
 		},
@@ -51,39 +27,15 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "307163F180DBA943097107FE1DC2E08D",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "307163F180DBA943097107FE1DC2E08D",
+						"in": "header",
+						"key": "token"
+					}
 				},
 				"method": "POST",
 				"header": [],
-				"url": {
-					"raw": "http://escaleapi.devtest/api/create/client",
-					"protocol": "http",
-					"host": [
-						"escaleapi",
-						"devtest"
-					],
-					"path": [
-						"api",
-						"create",
-						"client"
-					]
-				},
+				"url": "http://escaleapi.devtest/api/create/client",
 				"description": "test create client only -> route /create/client\n\ndocument:\ntype:\nname:"
 			},
 			"response": []
@@ -93,23 +45,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "307163F180DBA943097107FE1DC2E08D",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "307163F180DBA943097107FE1DC2E08D",
+						"in": "header",
+						"key": "token"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -153,61 +93,6 @@
 					]
 				},
 				"description": "Create customer and new client"
-			},
-			"response": []
-		},
-		{
-			"name": "http://escaleapi.devtest/api/create/item?price= 12.55&description= teste prod&amount= 1",
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "307163F180DBA943097107FE1DC2E08D",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "token",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://escaleapi.devtest/api/create/item?price= 12.55&description= teste prod&amount= 1",
-					"protocol": "http",
-					"host": [
-						"escaleapi",
-						"devtest"
-					],
-					"path": [
-						"api",
-						"create",
-						"item"
-					],
-					"query": [
-						{
-							"key": "price",
-							"value": " 12.55"
-						},
-						{
-							"key": "description",
-							"value": " teste prod"
-						},
-						{
-							"key": "amount",
-							"value": " 1"
-						}
-					]
-				}
 			},
 			"response": []
 		}
